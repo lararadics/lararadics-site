@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — LARARADICS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
+  :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--paper); color:var(--ink); font-family:'Archivo', sans-serif; -webkit-font-smoothing:antialiased; }
+
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0 6vw; height:var(--header-h);
+    position:sticky; top:0; z-index:15;
+    background:var(--paper);
+  }
+  .mark{ font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; color:var(--ink); }
+  nav{display:flex; gap:32px;}
+  nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
+  nav a:hover{opacity:1;}
+
+  .p-header{ padding:6vh 6vw 4vh; }
+  .p-back{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--stone); text-decoration:none; }
+  .p-back:hover{ color:var(--ink); }
+  .p-title{ font-size:clamp(26px,3.4vw,42px); font-weight:500; margin-top:16px; }
+
+  .montage{ padding:0 6vw 12vh; display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:var(--gap); }
+  .m-cell{ overflow:hidden; }
+  .m-cell img{ width:100%; height:auto; display:block; }
+
+  @media (max-width:480px){
+    header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
+    nav{ gap:18px; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="mark">LARARADICS</a>
+    <nav>
+      <a href="architecture.html">Architecture</a>
+      <a href="events.html">Events</a>
+      <a href="info.html">Info</a>
+    </nav>
+  </header>
+
+  <div class="p-header">
+    <a class="p-back" href="work.html" id="backLink">← Back</a>
+    <div class="p-title" id="projectTitle"></div>
+  </div>
+
+  <div class="montage" id="montage"></div>
+
+  <script>
+
+    function src(name){ return 'images/' + name; }
+
+    const PROJECTS = {
+      guggenheim: { title: 'Guggenheim',       category: 'architecture', images: ['IMG_9103.jpg', 'DSCF2919.jpg'] },
+      rotunda:    { title: 'Rotunda Studies',  category: 'architecture', images: ['IMG_0194.jpg', 'IMG_0195.jpg', 'IMG_0718.jpg'] },
+      movement:   { title: 'Movement',         category: 'events',       images: ['IMG_8729.jpg', 'DSCF7533.jpg'] },
+      roadside:   { title: 'Roadside',         category: 'events',       images: ['DSCF3836.jpg'] }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('p');
+    const project = PROJECTS[slug];
+
+    const titleEl = document.getElementById('projectTitle');
+    const montageEl = document.getElementById('montage');
+    const backLink = document.getElementById('backLink');
+
+    if (project) {
+      titleEl.textContent = project.title;
+      backLink.href = project.category + '.html';
+      backLink.textContent = '← ' + (project.category === 'architecture' ? 'Architecture' : 'Events');
+      project.images.forEach(fname => {
+        const cell = document.createElement('div');
+        cell.className = 'm-cell';
+        const img = document.createElement('img');
+        img.src = src(fname);
+        cell.appendChild(img);
+        montageEl.appendChild(cell);
+      });
+    } else {
+      titleEl.textContent = 'Project not found';
+    }
+  </script>
+</body>
+</html>

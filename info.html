@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info — LARARADICS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
+  :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --header-h: 56px; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--paper); color:var(--ink); font-family:'Archivo', sans-serif; -webkit-font-smoothing:antialiased; }
+
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0 6vw; height:var(--header-h);
+    position:sticky; top:0; z-index:15;
+    background:var(--paper);
+  }
+  .mark{ font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; color:var(--ink); }
+  nav{display:flex; gap:32px;}
+  nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
+  nav a:hover{opacity:1;}
+  nav a.active{opacity:1; font-weight:600;}
+
+  .info{ padding:12vh 6vw; max-width:640px; }
+  .info-name{ font-size:clamp(28px,4vw,44px); font-weight:500; margin-bottom:24px; }
+  .info-line{ font-size:15px; color:var(--stone); line-height:1.7; margin-bottom:6vh; }
+  .info-contact{ display:flex; flex-direction:column; gap:14px; }
+  .info-contact a, .info-contact span{ font-size:14px; color:var(--ink); text-decoration:none; opacity:.8; }
+  .info-contact a:hover{ opacity:1; }
+
+  @media (max-width:480px){
+    header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
+    nav{ gap:18px; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="mark">LARARADICS</a>
+    <nav>
+      <a href="architecture.html">Architecture</a>
+      <a href="events.html">Events</a>
+      <a href="#" class="active">Info</a>
+    </nav>
+  </header>
+
+  <section class="info">
+    <div class="info-name">Laura Radics</div>
+    <div class="info-line">Architect, photographer. Based in Basel.</div>
+    <div class="info-contact">
+      <a href="mailto:lararadics.studio@gmail.com">lararadics.studio@gmail.com</a>
+      <a href="#">Instagram — @lararadics</a>
+    </div>
+  </section>
+
+</body>
+</html>

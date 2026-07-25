@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture — LARARADICS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
+  :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--paper); color:var(--ink); font-family:'Archivo', sans-serif; -webkit-font-smoothing:antialiased; }
+
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0 6vw; height:var(--header-h);
+    position:sticky; top:0; z-index:15;
+    background:var(--paper);
+  }
+  .mark{ font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; color:var(--ink); }
+  nav{display:flex; gap:32px;}
+  nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
+  nav a:hover{opacity:1;}
+  nav a.active{opacity:1; font-weight:600;}
+
+  .category{ padding:6vh 6vw 10vh; }
+
+  .project-row{ display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:var(--gap); }
+  .p-link{ display:block; text-decoration:none; color:inherit; cursor:pointer; }
+  .p-cell{ position:relative; overflow:hidden; aspect-ratio:4/5; }
+  .p-cell img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) opacity(.55); transition:filter .45s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+  .p-link:hover .p-cell img{ filter:grayscale(0) opacity(1); transform:scale(1.015); }
+  .p-title{ margin-top:12px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); opacity:.55; transition:opacity .3s ease; }
+  .p-link:hover .p-title{ opacity:1; }
+
+  @media (max-width:480px){
+    header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
+    nav{ gap:18px; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="mark">LARARADICS</a>
+    <nav>
+      <a href="#" class="active">Architecture</a>
+      <a href="events.html">Events</a>
+      <a href="info.html">Info</a>
+    </nav>
+  </header>
+
+  <section class="category">
+    <div class="project-row">
+      <a class="p-link" href="project.html?p=guggenheim">
+        <div class="p-cell"><img src="images/IMG_9103.jpg" alt=""></div>
+        <div class="p-title">Guggenheim</div>
+      </a>
+      <a class="p-link" href="project.html?p=rotunda">
+        <div class="p-cell"><img src="images/IMG_0194.jpg" alt=""></div>
+        <div class="p-title">Rotunda Studies</div>
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
