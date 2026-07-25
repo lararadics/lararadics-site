@@ -42,7 +42,8 @@
     <a href="index.html" class="mark">LARARADICS</a>
     <nav>
       <a href="architecture.html">Architecture</a>
-      <a href="events.html">Events</a>
+      <a href="people.html">People</a>
+      <a href="motion.html">Motion</a>
       <a href="info.html">Info</a>
     </nav>
   </header>
@@ -61,9 +62,11 @@
     const PROJECTS = {
       guggenheim: { title: 'Guggenheim',       category: 'architecture', images: ['IMG_9103.jpg', 'DSCF2919.jpg'] },
       rotunda:    { title: 'Rotunda Studies',  category: 'architecture', images: ['IMG_0194.jpg', 'IMG_0195.jpg', 'IMG_0718.jpg'] },
-      movement:   { title: 'Movement',         category: 'events',       images: ['IMG_8729.jpg', 'DSCF7533.jpg'] },
-      roadside:   { title: 'Roadside',         category: 'events',       images: ['DSCF3836.jpg'] }
+      movement:   { title: 'Movement',         category: 'people',       images: ['IMG_8729.jpg', 'DSCF7533.jpg'] },
+      roadside:   { title: 'Roadside',         category: 'people',       images: ['DSCF3836.jpg'] }
     };
+
+    const CATEGORY_LABELS = { architecture: 'Architecture', people: 'People', motion: 'Motion' };
 
     const params = new URLSearchParams(window.location.search);
     const slug = params.get('p');
@@ -76,7 +79,7 @@
     if (project) {
       titleEl.textContent = project.title;
       backLink.href = project.category + '.html';
-      backLink.textContent = '← ' + (project.category === 'architecture' ? 'Architecture' : 'Events');
+      backLink.textContent = '← ' + (CATEGORY_LABELS[project.category] || project.category);
       project.images.forEach(fname => {
         const cell = document.createElement('div');
         cell.className = 'm-cell';

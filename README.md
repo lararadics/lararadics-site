@@ -4,28 +4,62 @@ Static site: no build step, no dependencies. Open any `.html` file directly or s
 
 ## Files
 - `index.html` — homepage (scroll-driven fade sequence)
-- `architecture.html`, `events.html` — category pages
+- `architecture.html`, `people.html`, `motion.html` — category pages
 - `project.html` — single project template, driven by a URL query param, e.g. `project.html?p=guggenheim`
 - `info.html` — info/contact page
 - `images/` — all photos, referenced by filename
+- `videos/` — video clips for the Motion page, referenced by filename
 
-## Updating photos
-Every image lives in `images/` under its own filename (the original camera filenames, e.g. `IMG_9103.jpg`, `DSCF2919.jpg`).
+## Changing photos on the homepage
+Open `index.html` in a plain text editor and find the `compositions` list near the top of the `<script>` block. Each line is one "slide" on the homepage:
 
-To swap in a real photo:
-1. Export/rename your file to match the filename already used in the site (e.g. replace `images/IMG_9103.jpg`), **or**
-2. Add a new file to `images/` and update the filename reference in the relevant HTML:
-   - Homepage sequence: edit the `compositions` array near the top of the `<script>` block in `index.html`
-   - Project montages: edit the `PROJECTS` object in `project.html`
-   - Architecture/Events grids: edit the `<img src="images/...">` tags directly in `architecture.html` / `events.html`
+```
+{ type:'full',  images:['IMG_9103.jpg'], align:'center' },
+```
 
-No other code changes are needed — just add the file and point to its name.
+- To swap a photo: replace the filename inside the quotes with a filename that exists in `images/` (or drop a new file into `images/` with that exact name).
+- To add a slide: copy one of the lines and paste it in the list, changing the filename.
+- To remove a slide: delete its line.
 
-## Publishing
-1. Push this folder to a GitHub repo (see the chat for exact commands).
-2. Connect the repo to Netlify (or similar) with build command: none, publish directory: `/` (repo root).
-3. Optional: add a custom domain in Netlify's domain settings once connected.
+`type` can be `full` (one big photo), `offset` (one photo, off-center), or `group` (three photos side by side).
+
+## Adding or changing projects
+Projects live in `project.html`, in the `PROJECTS` list near the top of the `<script>` block:
+
+```
+guggenheim: { title: 'Guggenheim', category: 'architecture', images: ['IMG_9103.jpg', 'DSCF2919.jpg'] },
+```
+
+- To add a new project: copy one line, give it a new name before the colon (e.g. `newbuild:`), a title, a category (`architecture` or `people`), and the list of image filenames.
+- To change a project's photos: edit the filenames inside `images: [...]`.
+- Each project automatically gets its own page at `project.html?p=yourprojectname`.
+- To link to it from a category page (`architecture.html` or `people.html`), add a new card:
+
+```html
+<a class="p-link" href="project.html?p=newbuild">
+  <div class="p-cell"><img src="images/YOUR-FILE.jpg" alt=""></div>
+  <div class="p-title">New Build</div>
+</a>
+```
+
+## Adding videos (Motion page)
+Open `motion.html` and find the `CLIPS` list:
+
+```
+{ title: 'Site Walkthrough', file: 'videos/site-walkthrough.mp4', poster: 'images/IMG_9103.jpg' },
+```
+
+1. Put your video file in the `videos/` folder.
+2. Add a line to `CLIPS` with a title and the filename (the `poster` image is optional — it's the still image shown before playback).
+
+## Updating photos in general
+Every image lives in `images/` under its own filename. To swap one in:
+1. Replace the file in `images/` with the same filename, **or**
+2. Add a new file and update the filename reference wherever it's used (see above).
+
+## Publishing changes
+This site auto-deploys: whenever you push new changes to the `main` branch on GitHub, Netlify rebuilds the live site automatically within a minute or two. No extra steps needed.
 
 ## Still to do
 - Favicon
-- Optimize/compress final production images (current ones are straight off camera, some are 400–550KB)
+- Optimize/compress final production images (some are 400–550KB straight off camera)
