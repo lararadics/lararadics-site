@@ -73,11 +73,15 @@
 
     // content is described once — mobile automatically flattens any "group" into single-image slides
     const compositions = [
-      { type:'full',  images:['IMG_9103.jpg'], align:'center' },
-      { type:'group', images:['DSCF2919.jpg','IMG_8729.jpg','DSCF7533.jpg'] },
-      { type:'offset',images:['IMG_0194.jpg'] },
-      { type:'full',  images:['IMG_3858.jpg'], align:'right' },
-      { type:'group', images:['IMG_0718.jpg','IMG_0195.jpg','DSCF3836.jpg'] }
+      { type:'offset',images:['IMG_01.jpg'] },
+      { type:'full',images:['IMG_02.jpg'], align:'left' },
+      { type:'offset',images:['IMG_03.jpeg'], align:'right' },
+      { type:'offset',  images:['IMG_04.jpg'], align:'center' },
+      { type:'full',  images:['IMG_05.jpg'], align:'left' },
+      { type:'offset',  images:['IMG_06.jpeg'], align:'right' },
+      { type:'offset',  images:['IMG_07.jpeg'], align:'center' },
+      { type:'full',  images:['IMG_08.jpeg'], align:'left' },
+
     ];
 
     function isMobile(){ return window.innerWidth <= 820; }

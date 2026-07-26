@@ -26,9 +26,13 @@
   .p-back:hover{ color:var(--ink); }
   .p-title{ font-size:clamp(26px,3.4vw,42px); font-weight:500; margin-top:16px; }
 
-  .montage{ padding:0 6vw 12vh; display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:var(--gap); }
-  .m-cell{ overflow:hidden; }
-  .m-cell img{ width:100%; height:auto; display:block; }
+.montage{ padding:0 6vw 12vh; column-count:3; column-gap:24px; }
+.m-cell{ break-inside:avoid; margin-bottom:24px; }
+.m-cell img{ width:100%; height:auto; display:block; }
+
+@media (max-width:720px){
+  .montage{ column-count:1; }
+}
 
   @media (max-width:480px){
     header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
@@ -59,12 +63,15 @@
 
     function src(name){ return 'images/' + name; }
 
-    const PROJECTS = {
-      guggenheim: { title: 'Guggenheim',       category: 'architecture', images: ['IMG_9103.jpg', 'DSCF2919.jpg'] },
-      rotunda:    { title: 'Rotunda Studies',  category: 'architecture', images: ['IMG_0194.jpg', 'IMG_0195.jpg', 'IMG_0718.jpg'] },
-      movement:   { title: 'Movement',         category: 'people',       images: ['IMG_8729.jpg', 'DSCF7533.jpg'] },
-      roadside:   { title: 'Roadside',         category: 'people',       images: ['DSCF3836.jpg'] }
-    };
+const PROJECTS = {
+  Paris: { title: 'PARIS', category: 'architecture', images: ['IMG_A_1_01.jpeg', 'IMG_A_1_02.jpeg', 'IMG_A_1_03.jpeg', 'IMG_A_1_04.jpeg', 'IMG_A_1_05.jpeg', 'IMG_A_1_06.jpeg'] },
+  NewYork: { title: 'NEW YORK', category: 'architecture', images: ['IMG_A_2_01.jpeg', 'IMG_A_2_02.jpeg', 'IMG_A_2_03.jpeg', 'IMG_A_2_04.jpeg', 'IMG_A_2_05.jpeg', 'IMG_A_2_06.jpeg', 'IMG_A_2_07.jpeg', 'IMG_A_2_08.jpeg', 'IMG_A_2_09.jpeg', 'IMG_A_2_10.jpeg'] },
+  VitraDesignMuseum01: { title: 'VITRA DESIGN MUSEUM 01', category: 'architecture', images: ['IMG_A_3_01.jpeg', 'IMG_A_3_02.jpeg', 'IMG_A_3_03.jpeg', 'IMG_A_3_04.jpeg', 'IMG_A_3_05.jpeg', 'IMG_A_3_06.jpeg', 'IMG_A_3_07.jpeg'] },
+  VitraDesignMuseum02: { title: 'VITRA DESIGN MUSEUM 02', category: 'architecture', images: ['IMG_A_4_01.jpeg', 'IMG_A_4_02.jpeg', 'IMG_A_4_03.jpeg', 'IMG_A_4_04.jpeg', 'IMG_A_4_05.jpeg', 'IMG_A_4_06.jpeg', 'IMG_A_4_07.jpeg'] },
+  NationalAthleticsCenter: { title: 'NATIONAL ATHLETICS CENTER, BUDAPEST', category: 'architecture', images: ['IMG_A_5_01.jpeg', 'IMG_A_5_02.jpeg', 'IMG_A_5_03.jpeg', 'IMG_A_5_04.jpeg', 'IMG_A_5_05.jpeg', 'IMG_A_5_06.jpeg', 'IMG_A_5_07.jpeg', 'IMG_A_5_08.jpeg', 'IMG_A_5_09.jpeg', 'IMG_A_5_10.jpeg', 'IMG_A_5_11.jpeg', 'IMG_A_5_12.jpeg', 'IMG_A_5_13.jpeg', 'IMG_A_5_14.jpeg', 'IMG_A_5_15.jpeg'] },
+  NewYork: { title: 'NEW YORK', category: 'architecture', images: ['IMG_A_2_01.jpeg', 'IMG_A_2_02.jpeg', 'IMG_A_2_03.jpeg', 'IMG_A_2_04.jpeg', 'IMG_A_2_05.jpeg', 'IMG_A_2_06.jpeg', 'IMG_A_2_07.jpeg', 'IMG_A_2_08.jpeg', 'IMG_A_2_09.jpeg', 'IMG_A_2_10.jpeg'] },
+  NewYork: { title: 'NEW YORK', category: 'architecture', images: ['IMG_A_2_01.jpeg', 'IMG_A_2_02.jpeg', 'IMG_A_2_03.jpeg', 'IMG_A_2_04.jpeg', 'IMG_A_2_05.jpeg', 'IMG_A_2_06.jpeg', 'IMG_A_2_07.jpeg', 'IMG_A_2_08.jpeg', 'IMG_A_2_09.jpeg', 'IMG_A_2_10.jpeg'] }
+};
 
     const CATEGORY_LABELS = { architecture: 'Architecture', people: 'People', motion: 'Motion' };
 
