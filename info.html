@@ -24,7 +24,10 @@
   nav a:hover{opacity:1;}
   nav a.active{opacity:1; font-weight:600;}
 
-  .info{ padding:12vh 6vw; max-width:640px; }
+  .info{ display:flex; gap:6vw; align-items:flex-start; padding:12vh 6vw; max-width:900px; }
+.info-photo{ flex:0 0 240px; }
+.info-photo img{ width:100%; height:auto; display:block; }
+.info-text{ flex:1; max-width:560px; }
   .info-name{ font-size:clamp(28px,4vw,44px); font-weight:500; margin-bottom:24px; }
   .info-line{ font-size:15px; color:var(--stone); line-height:1.7; margin-bottom:6vh; }
   .info-contact{ display:flex; flex-direction:column; gap:14px; }
@@ -50,11 +53,13 @@
   </header>
 
   <section class="info">
+    <div class="info-photo"><img src="images/IMG_LR.jpg" alt="Laura Radics"></div>
+    <div class="info-line">Architect based in Basel, working in photography alongside my architectural practice. My work sits at the intersection of the two — an interest in how spatial awareness, light and material shape the way a building is experienced, and the way it's photographed. Currently documenting Le Corbusier's buildings across Switzerland and France, with a focus on light and concrete as subjects in their own right.</div>
     <div class="info-name">Laura Radics</div>
     <div class="info-line">Architect, photographer. Based in Basel.</div>
     <div class="info-contact">
       <a href="mailto:lararadics.studio@gmail.com">lararadics.studio@gmail.com</a>
-      <a href="#">Instagram — @lararadics</a>
+      <a href="#">Instagram — @lararadics.studio</a>
     </div>
   </section>
 
