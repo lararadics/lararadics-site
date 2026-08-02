@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project — LARARADICS</title>
 <style>
+  footer{ padding:32px 6vw 40px; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -70,7 +72,7 @@ const PROJECTS = {
   VitraDesignMuseum02: { title: 'VITRA DESIGN MUSEUM 02', category: 'architecture', images: ['IMG_A_4_01.jpeg', 'IMG_A_4_02.jpeg', 'IMG_A_4_03.jpeg', 'IMG_A_4_04.jpeg', 'IMG_A_4_05.jpeg', 'IMG_A_4_06.jpeg', 'IMG_A_4_07.jpeg'] },
   NationalAthleticsCenter: { title: 'NATIONAL ATHLETICS CENTER, BUDAPEST', category: 'architecture', images: ['IMG_A_5_01.jpg', 'IMG_A_5_02.jpg', 'IMG_A_5_03.jpg', 'IMG_A_5_04.jpg', 'IMG_A_5_05.jpg', 'IMG_A_5_06.jpg', 'IMG_A_5_07.jpg', 'IMG_A_5_08.jpg', 'IMG_A_5_09.jpg', 'IMG_A_5_10.jpg', 'IMG_A_5_11.jpg', 'IMG_A_5_12.jpg', 'IMG_A_5_13.jpg', 'IMG_A_5_14.jpg', 'IMG_A_5_15.jpg'] },
   Underground01: { title: 'UNDERGROUND 01', category: 'architecture', images: ['IMG_A_6_01.jpg', 'IMG_A_6_02.jpg', 'IMG_A_6_03.jpg', 'IMG_A_6_04.jpg', 'IMG_A_6_05.jpg'] },
-  Jugendherberge: { title: 'JUGENDHERBERGE, BASEL', category: 'architecture', images: ['IMG_A_7_01.jpeg', 'IMG_A_2_02.jpeg', 'IMG_A_7_03.jpeg', 'IMG_A_7_04.jpeg', 'IMG_A_7_05.jpeg', 'IMG_A_7_06.jpeg', 'IMG_A_7_07.jpeg'] },
+  Jugendherberge: { title: 'JUGENDHERBERGE, BASEL', category: 'architecture', images: ['IMG_A_7_01.jpeg', 'IMG_A_7_02.jpeg', 'IMG_A_7_03.jpeg', 'IMG_A_7_04.jpeg', 'IMG_A_7_05.jpeg', 'IMG_A_7_06.jpeg', 'IMG_A_7_07.jpeg'] },
   KHaus: { title: 'KHAUS', category: 'architecture', images: ['IMG_A_8_01.jpeg', 'IMG_A_8_02.jpeg', 'IMG_A_8_03.jpeg', 'IMG_A_8_04.jpeg', 'IMG_A_8_05.jpeg', 'IMG_A_8_06.jpeg', 'IMG_A_8_07.jpeg'] },
   BuiltByNature: { title: 'BUILT BY NATURE', category: 'architecture', images: ['IMG_A_99_01.jpeg', 'IMG_A_99_02.jpeg', 'IMG_A_99_03.jpeg', 'IMG_A_99_04.jpeg', 'IMG_A_99_05.jpeg'] },
   DayOfTheBathers: { title: 'DAY OF THE BATHERS', category: 'people', images: ['IMG_P_1_01.jpg', 'IMG_P_1_02.jpg', 'IMG_P_1_03.jpg', 'IMG_P_1_04.jpg', 'IMG_P_1_05.jpg', 'IMG_P_1_06.jpg', 'IMG_P_1_07.jpg', 'IMG_P_1_08.jpg', 'IMG_P_1_09.jpg', 'IMG_P_1_10.jpg'] },
@@ -102,6 +104,13 @@ const PROJECTS = {
     } else {
       titleEl.textContent = 'Project not found';
     }
+  </script>
+  
+  <footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
   </script>
 </body>
 </html>
