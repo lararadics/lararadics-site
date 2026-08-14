@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Info — LARARADICS</title>  
+<title>Info — LARARADICS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ background:var(--paper); color:var(--ink); font-family:'Archivo', sans-serif; -webkit-font-smoothing:antialiased; }
@@ -37,6 +39,8 @@
   @media (max-width:480px){
     header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
     nav{ gap:18px; }
+    .info{ flex-direction:column; gap:5vh; padding:6vh 6vw; }
+    .info-photo{ flex:none; width:100%; max-width:280px; }
   }
 </style>
 </head>
@@ -53,7 +57,7 @@
   </header>
 
   <section class="info">
-    <div class="info-photo"><img src="images/IMG_LR_C.jpeg" alt="Laura Radics"></div>
+    <div class="info-photo"><img src="images/IMG_LR_C.jpeg" alt="Laura Radics" decoding="async" fetchpriority="high"></div>
     <div class="info-text">
       <div class="info-name">Laura Radics</div>
       <div class="info-line">As an architect currently based in Basel, I have developed an interest in photography alongside my architectural practice. Photography has become a natural extension of my perspective, allowing me to explore how light transforms a space, how people interact with their surroundings, and how small details contribute to the experience of a place. Through photography, I explore the same questions that guide my architectural work: how spaces are perceived, experienced, and remembered.</div>

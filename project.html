@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project — LARARADICS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  footer{ padding:32px 6vw 40px; font: size 6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ background:var(--paper); color:var(--ink); font-family:'Archivo', sans-serif; -webkit-font-smoothing:antialiased; }
@@ -93,10 +95,16 @@ const PROJECTS = {
       titleEl.textContent = project.title;
       backLink.href = project.category + '.html';
       backLink.textContent = '← ' + (CATEGORY_LABELS[project.category] || project.category);
-      project.images.forEach(fname => {
+      project.images.forEach((fname, i) => {
         const cell = document.createElement('div');
         cell.className = 'm-cell';
         const img = document.createElement('img');
+        img.decoding = 'async';
+        if (i < 2) {
+          img.fetchPriority = 'high';
+        } else {
+          img.loading = 'lazy';
+        }
         img.src = src(fname);
         cell.appendChild(img);
         montageEl.appendChild(cell);

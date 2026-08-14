@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LARARADICS — Fade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; --footer-h: 48px; --vh: 1vh; }
   *{box-sizing:border-box; margin:0; padding:0;}
   html, body{ height:100%; }
@@ -32,6 +34,7 @@
     position:absolute; inset:0;
     opacity:0;
     transition: opacity .7s ease;
+    will-change: opacity;
     display:flex; align-items:center; justify-content:center;
   }
   .page.align-left{ justify-content:flex-start; }
@@ -118,6 +121,8 @@
             const wrap = document.createElement('div');
             wrap.className = cls[idx] || 't3';
             const im = document.createElement('img');
+            im.decoding = 'async';
+            if (i === 0) { im.fetchPriority = 'high'; } else { im.loading = 'lazy'; }
             im.src = src(img);
             wrap.appendChild(im);
             grid.appendChild(wrap);
@@ -125,6 +130,8 @@
           page.appendChild(grid);
         } else {
           const im = document.createElement('img');
+          im.decoding = 'async';
+          if (i === 0) { im.fetchPriority = 'high'; } else { im.loading = 'lazy'; }
           im.src = src(s.images[0]);
           page.appendChild(im);
         }
@@ -166,7 +173,20 @@
     setVh();
     layout();
 
-    window.addEventListener('scroll', updateProgress, { passive:true });
+    // rAF-throttled scroll handler — only ever runs updateProgress once per
+    // animation frame, no matter how many scroll events fire in between.
+    let scrollTicking = false;
+    function onScroll(){
+      if (!scrollTicking){
+        window.requestAnimationFrame(() => {
+          updateProgress();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive:true });
     window.addEventListener('resize', () => {
       setVh();
       const nowMobile = isMobile();
