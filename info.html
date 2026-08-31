@@ -4,11 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Info — LARARADICS</title>
+<meta name="description" content="Laura Radics — architect and photographer based in Basel. Get in touch for architecture, portrait, or event photography.">
+<link rel="canonical" href="https://lararadics.studio/info">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Info — LARARADICS">
+<meta property="og:description" content="Laura Radics — architect and photographer based in Basel.">
+<meta property="og:url" content="https://lararadics.studio/info">
+<meta property="og:image" content="https://lararadics.studio/images/IMG_LR_C.jpeg">
+<meta property="og:site_name" content="LARARADICS">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Info — LARARADICS">
+<meta name="twitter:image" content="https://lararadics.studio/images/IMG_LR_C.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  .footer-tagline{ font-size:11px; letter-spacing:.03em; text-transform:none; color:var(--stone); opacity:.75; margin-bottom:12px; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -25,22 +40,28 @@
   nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
   nav a:hover{opacity:1;}
   nav a.active{opacity:1; font-weight:600;}
+  .lang-btn{ background:none; border:none; font:inherit; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; cursor:pointer; padding:0; }
+  .lang-btn:hover{ opacity:1; }
 
-  .info{ display:flex; gap:6vw; align-items:flex-start; padding:12vh 6vw; max-width:1200px; margin:0 auto; }
+  .info-icons{ display:flex; gap:28px; max-width:1200px; margin:0 auto; padding:5vh 6vw 0; }
+  .info-icons a{ color:var(--stone); opacity:.85; display:inline-flex; align-items:center; gap:9px; text-decoration:none; transition:opacity .25s ease; }
+  .info-icons a:hover{ opacity:1; color:var(--ink); }
+  .info-icons svg{ width:18px; height:18px; display:block; flex-shrink:0; }
+  .info-icons span{ font-size:13px; }
+
+  .info{ display:flex; gap:6vw; align-items:flex-start; padding:4vh 6vw 12vh; max-width:1200px; margin:0 auto; }
   .info-photo{ flex:0 0 360px; }
   .info-photo img{ width:100%; height:auto; display:block; }
   .info-text{ flex:1; max-width:1000px; }
   .info-name{ font-size:25px; font-weight:600; margin-bottom:20px; color:var(--stone); }
   .info-line{ font-size:13px; color:var(--stone); line-height:1.7; margin-bottom:6vh; }
-  .info-contact{ display:flex; flex-direction:column; gap:14px; }
-  .info-contact a, .info-contact span{ font-size:13px; color:var(--stone); text-decoration:none; opacity:.8; }
-  .info-contact a:hover{ opacity:1; }
 
   @media (max-width:480px){
     header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
     nav{ gap:18px; }
-    .info{ flex-direction:column; gap:5vh; padding:6vh 6vw; }
+    .info{ flex-direction:column; gap:5vh; padding:2vh 6vw 6vh; }
     .info-photo{ flex:none; width:100%; max-width:280px; }
+    .info-icons{ padding:4vh 6vw 0; }
   }
 </style>
 </head>
@@ -49,30 +70,47 @@
   <header>
     <a href="index.html" class="mark">LARARADICS</a>
     <nav>
-      <a href="architecture.html">Architecture</a>
-      <a href="people.html">People</a>
-      <a href="motion.html">Motion</a>
-      <a href="#" class="active">Info</a>
+      <a href="architecture.html" data-i18n="nav_architecture">Architecture</a>
+      <a href="people.html" data-i18n="nav_people">People</a>
+      <a href="motion.html" data-i18n="nav_motion">Motion</a>
+      <a href="#" class="active" data-i18n="nav_info">Info</a>
+      <button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button>
     </nav>
   </header>
+
+  <div class="info-icons">
+    <a href="mailto:lararadics.studio@gmail.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+      <span>lararadics.studio@gmail.com</span>
+    </a>
+    <a href="https://www.instagram.com/lararadics.studio" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>@lararadics.studio</span>
+    </a>
+  </div>
 
   <section class="info">
     <div class="info-photo"><img src="images/IMG_LR_C.jpeg" alt="Laura Radics" decoding="async" fetchpriority="high"></div>
     <div class="info-text">
       <div class="info-name">Laura Radics</div>
-      <div class="info-line">As an architect currently based in Basel, I have developed an interest in photography alongside my architectural practice. Photography has become a natural extension of my perspective, allowing me to explore how light transforms a space, how people interact with their surroundings, and how small details contribute to the experience of a place. Through photography, I explore the same questions that guide my architectural work: how spaces are perceived, experienced, and remembered.</div>
-      <div class="info-contact">
-        <a href="mailto:lararadics.studio@gmail.com">lararadics.studio@gmail.com</a>
-        <a href="https://www.instagram.com/lararadics.studio" target="_blank">Instagram — @lararadics.studio</a>
-      </div>
+      <div class="info-line" data-i18n="info_bio">As an architect currently based in Basel, I have developed an interest in photography alongside my architectural practice. Photography has become a natural extension of my perspective, allowing me to explore how light transforms a space, how people interact with their surroundings, and how small details contribute to the experience of a place. Through photography, I explore the same questions that guide my architectural work: how spaces are perceived, experienced, and remembered.</div>
     </div>
   </section>
 
-  <footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+  <footer><div class="footer-tagline" data-i18n="tagline">Architecture, Photography &amp; Videography — Laura Radics, Basel</div>&copy; <span id="year"></span> LARARADICS. <span data-i18n="footer_rights">All rights reserved.</span></footer>
 
+  <script src="i18n.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
+    i18nApply(localStorage.getItem('site-lang') || 'en');
   </script>
 </body>
 </html>

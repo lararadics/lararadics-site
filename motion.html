@@ -4,11 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motion — LARARADICS</title>
+<meta name="description" content="Motion and video work by Laura Radics — Basel-based architect and photographer.">
+<link rel="canonical" href="https://lararadics.studio/motion">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Motion — LARARADICS">
+<meta property="og:description" content="Motion and video work by Laura Radics — Basel-based architect and photographer.">
+<meta property="og:url" content="https://lararadics.studio/motion">
+<meta property="og:site_name" content="LARARADICS">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Motion — LARARADICS">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  .footer-tagline{ font-size:11px; letter-spacing:.03em; text-transform:none; color:var(--stone); opacity:.75; margin-bottom:12px; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -25,11 +38,13 @@
   nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
   nav a:hover{opacity:1;}
   nav a.active{opacity:1; font-weight:600;}
+  .lang-btn{ background:none; border:none; font:inherit; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; cursor:pointer; padding:0; }
+  .lang-btn:hover{ opacity:1; }
 
-  .category{ padding:6vh 6vw 10vh; }
+  .category{ padding:6vh 5vw 10vh; }
 
-  .project-row{ display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:var(--gap); }
-  .p-cell{ position:relative; overflow:hidden; aspect-ratio:4/5; background:#000; }
+  .project-row{ display:grid; grid-template-columns:1fr; gap:var(--gap); }
+  .p-cell{ position:relative; overflow:hidden; width:100%; max-width:1400px; margin:0 auto; aspect-ratio:16/9; background:#000; }
   .p-cell video{ width:100%; height:100%; object-fit:cover; display:block; }
   .p-title{ margin-top:12px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); opacity:.55; }
 
@@ -46,10 +61,11 @@
   <header>
     <a href="index.html" class="mark">LARARADICS</a>
     <nav>
-      <a href="architecture.html">Architecture</a>
-      <a href="people.html">People</a>
-      <a href="#" class="active">Motion</a>
-      <a href="info.html">Info</a>
+      <a href="architecture.html" data-i18n="nav_architecture">Architecture</a>
+      <a href="people.html" data-i18n="nav_people">People</a>
+      <a href="#" class="active" data-i18n="nav_motion">Motion</a>
+      <a href="info.html" data-i18n="nav_info">Info</a>
+      <button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button>
     </nav>
   </header>
 
@@ -63,13 +79,13 @@
     // shown before the video plays — put it in /images and reference it
     // the same way as everywhere else on the site.
     const CLIPS = [
-      // { title: 'Site Walkthrough', file: 'videos/site-walkthrough.mp4', poster: 'images/IMG_9103.jpg' },
+      { title: 'Unité d’habitation', file: 'videos/Unité dhabitation.mp4' },
     ];
 
     const row = document.getElementById('motionRow');
 
     if (CLIPS.length === 0) {
-      row.innerHTML = '<div class="empty">Videos coming soon.</div>';
+      row.innerHTML = '<div class="empty" data-i18n="motion_empty">Videos coming soon.</div>';
     } else {
       CLIPS.forEach(clip => {
         const wrap = document.createElement('div');
@@ -79,6 +95,7 @@
         video.src = clip.file;
         if (clip.poster) video.poster = clip.poster;
         video.controls = true;
+        video.muted = true;
         video.preload = 'metadata';
         cell.appendChild(video);
         const title = document.createElement('div');
@@ -91,11 +108,13 @@
     }
   </script>
 
-<footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+<footer><div class="footer-tagline" data-i18n="tagline">Architecture, Photography &amp; Videography — Laura Radics, Basel</div>&copy; <span id="year"></span> LARARADICS. <span data-i18n="footer_rights">All rights reserved.</span></footer>
 
+  <script src="i18n.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
+    i18nApply(localStorage.getItem('site-lang') || 'en');
   </script>
 </body>
 </html>

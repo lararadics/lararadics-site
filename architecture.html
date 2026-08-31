@@ -4,11 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Architecture — LARARADICS</title>
+<meta name="description" content="Architectural photography by Laura Radics — Basel-based architect and photographer. A selection of buildings and spaces across Europe and beyond.">
+<link rel="canonical" href="https://lararadics.studio/architecture">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Architecture — LARARADICS">
+<meta property="og:description" content="Architectural photography by Laura Radics — Basel-based architect and photographer.">
+<meta property="og:url" content="https://lararadics.studio/architecture">
+<meta property="og:image" content="https://lararadics.studio/images/thumbs/IMG_A_1_01.jpeg">
+<meta property="og:site_name" content="LARARADICS">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Architecture — LARARADICS">
+<meta name="twitter:image" content="https://lararadics.studio/images/thumbs/IMG_A_1_01.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  .footer-tagline{ font-size:11px; letter-spacing:.03em; text-transform:none; color:var(--stone); opacity:.75; margin-bottom:12px; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -25,6 +40,8 @@
   nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
   nav a:hover{opacity:1;}
   nav a.active{opacity:1; font-weight:600;}
+  .lang-btn{ background:none; border:none; font:inherit; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; cursor:pointer; padding:0; }
+  .lang-btn:hover{ opacity:1; }
 
   .category{ padding:6vh 6vw 10vh; }
 
@@ -47,59 +64,72 @@
   <header>
     <a href="index.html" class="mark">LARARADICS</a>
     <nav>
-      <a href="#" class="active">Architecture</a>
-      <a href="people.html">People</a>
-      <a href="motion.html">Motion</a>
-      <a href="info.html">Info</a>
+      <a href="#" class="active" data-i18n="nav_architecture">Architecture</a>
+      <a href="people.html" data-i18n="nav_people">People</a>
+      <a href="motion.html" data-i18n="nav_motion">Motion</a>
+      <a href="info.html" data-i18n="nav_info">Info</a>
+      <button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button>
     </nav>
   </header>
 
 <section class="category">
     <div class="project-row">
-      <a class="p-link" href="project.html?p=Paris">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_1_01.jpeg" alt="" decoding="async" fetchpriority="high"></div>
-        <div class="p-title">PARIS</div>
+      <a class="p-link" href="project.html?p=BoursedeCommerce">
+        <div class="p-cell"><img src="images/thumbs/IMG_A_1_01.jpeg" alt="Architecture photography — Bourse de Commerce, by Laura Radics" decoding="async" fetchpriority="high"></div>
+        <div class="p-title">BOURSE DE COMMERCE, PARIS</div>
+      </a>
+      <div class="project-row">
+      <a class="p-link" href="project.html?p=NotreDamedeHaut">
+        <div class="p-cell"><img src="images/thumbs/IMG_A_9_01.jpeg" alt="Architecture photography — Bourse de Commerce, by Laura Radics" decoding="async" fetchpriority="high"></div>
+        <div class="p-title">NOTRE-DAME DU HAUT, RONCHAMP</div>
+      </a>
+      <div class="project-row">
+      <a class="p-link" href="project.html?p=CouventdeLaTourette">
+        <div class="p-cell"><img src="images/thumbs/IMG_A_10_01.jpeg" alt="Architecture photography — Bourse de Commerce, by Laura Radics" decoding="async" fetchpriority="high"></div>
+        <div class="p-title">COUVENT DE LA TOURETTE, ÉVEUX</div>
       </a>
       <a class="p-link" href="project.html?p=NewYork">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_2_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_2_01.jpeg" alt="Architecture photography — New York, by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">NEW YORK</div>
       </a>
       <a class="p-link" href="project.html?p=VitraDesignMuseum01">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_3_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_3_01.jpeg" alt="Vitra Design Museum, Basel — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">VITRA DESIGN MUSEUM 01</div>
       </a>
       <a class="p-link" href="project.html?p=VitraDesignMuseum02">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_4_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_4_01.jpeg" alt="Vitra Design Museum, Basel — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">VITRA DESIGN MUSEUM 02</div>
       </a>
       <a class="p-link" href="project.html?p=NationalAthleticsCenter">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_5_15.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_5_15.jpg" alt="National Athletics Center, Budapest — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">NATIONAL ATHLETICS CENTER, BUDAPEST</div>
       </a>
       <a class="p-link" href="project.html?p=Underground01">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_6_01.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_6_01.jpg" alt="Underground architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">UNDERGROUND 01</div>
       </a>
       <a class="p-link" href="project.html?p=Jugendherberge">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_7_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_7_01.jpeg" alt="Jugendherberge, Basel — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">JUGENDHERBERGE, BASEL</div>
       </a>
       <a class="p-link" href="project.html?p=KHaus">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_8_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_8_01.jpeg" alt="KHaus — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">KHAUS</div>
       </a>
       <a class="p-link" href="project.html?p=BuiltByNature">
-        <div class="p-cell"><img src="images/thumbs/IMG_A_99_01.jpeg" alt="" loading="lazy" decoding="async"></div>
+        <div class="p-cell"><img src="images/thumbs/IMG_A_99_01.jpeg" alt="Built by Nature — architecture photography by Laura Radics" loading="lazy" decoding="async"></div>
         <div class="p-title">BUILT BY NATURE</div>
       </a>
     </div>
   </section>
 
-  <footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+  <footer><div class="footer-tagline" data-i18n="tagline">Architecture, Photography &amp; Videography — Laura Radics, Basel</div>&copy; <span id="year"></span> LARARADICS. <span data-i18n="footer_rights">All rights reserved.</span></footer>
 
+  <script src="i18n.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
+    i18nApply(localStorage.getItem('site-lang') || 'en');
   </script>
 </body>
 </html>

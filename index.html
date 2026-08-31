@@ -3,12 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LARARADICS — Fade</title>
+<title>LARARADICS — Architecture &amp; Photography, Basel</title>
+<meta name="description" content="Laura Radics — architect and photographer based in Basel. Architectural, portrait, and motion photography exploring light, structure, and space.">
+<link rel="canonical" href="https://lararadics.studio/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="LARARADICS — Architecture & Photography, Basel">
+<meta property="og:description" content="Laura Radics — architect and photographer based in Basel. Architectural, portrait, and motion photography exploring light, structure, and space.">
+<meta property="og:url" content="https://lararadics.studio/">
+<meta property="og:image" content="https://lararadics.studio/images/IMG_01.jpg">
+<meta property="og:site_name" content="LARARADICS">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LARARADICS — Architecture & Photography, Basel">
+<meta name="twitter:description" content="Laura Radics — architect and photographer based in Basel.">
+<meta name="twitter:image" content="https://lararadics.studio/images/IMG_01.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  .footer-tagline{ font-size:11px; letter-spacing:.03em; text-transform:none; color:var(--stone); opacity:.75; margin-bottom:12px; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; --footer-h: 48px; --vh: 1vh; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -26,6 +42,8 @@
   nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
   nav a:hover{opacity:1;}
   nav a.active{ opacity:1; font-weight:600; }
+  .lang-btn{ background:none; border:none; font:inherit; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; cursor:pointer; padding:0; }
+  .lang-btn:hover{ opacity:1; }
 
   .fade-outer{ position:relative; } /* height set by JS based on actual slide count */
   .fade-sticky{ position:sticky; top: var(--header-h); height: calc(var(--vh) * 100 - var(--header-h)); overflow:hidden; }
@@ -63,7 +81,7 @@
 <body>
   <header>
     <a href="index.html" class="mark">LARARADICS</a>
-    <nav><a href="architecture.html">Architecture</a><a href="people.html">People</a><a href="motion.html">Motion</a><a href="info.html">Info</a></nav>
+    <nav><a href="architecture.html" data-i18n="nav_architecture">Architecture</a><a href="people.html" data-i18n="nav_people">People</a><a href="motion.html" data-i18n="nav_motion">Motion</a><a href="info.html" data-i18n="nav_info">Info</a><button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button></nav>
   </header>
 
   <section class="fade-outer" id="fadeOuter">
@@ -121,6 +139,7 @@
             const wrap = document.createElement('div');
             wrap.className = cls[idx] || 't3';
             const im = document.createElement('img');
+            im.alt = 'Architecture and photography by Laura Radics, Basel';
             im.decoding = 'async';
             if (i === 0) { im.fetchPriority = 'high'; } else { im.loading = 'lazy'; }
             im.src = src(img);
@@ -130,6 +149,7 @@
           page.appendChild(grid);
         } else {
           const im = document.createElement('img');
+          im.alt = 'Architecture and photography by Laura Radics, Basel';
           im.decoding = 'async';
           if (i === 0) { im.fetchPriority = 'high'; } else { im.loading = 'lazy'; }
           im.src = src(s.images[0]);
@@ -201,11 +221,13 @@
       window.visualViewport.addEventListener('resize', () => { setVh(); updateProgress(); });
     }
   </script>
-<footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+<footer><div class="footer-tagline" data-i18n="tagline">Architecture, Photography &amp; Videography — Laura Radics, Basel</div>&copy; <span id="year"></span> LARARADICS. <span data-i18n="footer_rights">All rights reserved.</span></footer>
 
+<script src="i18n.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
+  i18nApply(localStorage.getItem('site-lang') || 'en');
 </script>
 </body>
 </html>

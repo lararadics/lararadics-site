@@ -4,11 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Project — LARARADICS</title>
+<meta name="description" id="metaDescription" content="Photography by Laura Radics — Basel-based architect and photographer.">
+<link rel="canonical" id="canonicalLink" href="https://lararadics.studio/project">
+
+<meta property="og:type" content="website">
+<meta property="og:title" id="ogTitle" content="LARARADICS">
+<meta property="og:description" id="ogDescription" content="Photography by Laura Radics — Basel-based architect and photographer.">
+<meta property="og:url" id="ogUrl" content="https://lararadics.studio/project">
+<meta property="og:image" id="ogImage" content="https://lararadics.studio/images/IMG_LR_C.jpeg">
+<meta property="og:site_name" content="LARARADICS">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twitterTitle" content="LARARADICS">
+<meta name="twitter:image" id="twitterImage" content="https://lararadics.studio/images/IMG_LR_C.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   footer{ padding:32px 6vw 40px; font-size:6px; letter-spacing:.05em; text-transform:uppercase; color:var(--stone); text-align:center; }
+  .footer-tagline{ font-size:11px; letter-spacing:.03em; text-transform:none; color:var(--stone); opacity:.75; margin-bottom:12px; }
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   :root{ --paper:#FFFFFF; --ink:#111110; --stone:#6E6B65; --line: rgba(17,17,16,0.09); --gap: 12px; --header-h: 56px; }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -24,6 +39,8 @@
   nav{display:flex; gap:32px;}
   nav a{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; text-decoration:none; }
   nav a:hover{opacity:1;}
+  .lang-btn{ background:none; border:none; font:inherit; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); opacity:.72; cursor:pointer; padding:0; }
+  .lang-btn:hover{ opacity:1; }
 
   .p-header{ padding:6vh 6vw 4vh; }
   .p-back{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--stone); text-decoration:none; }
@@ -49,10 +66,11 @@
   <header>
     <a href="index.html" class="mark">LARARADICS</a>
     <nav>
-      <a href="architecture.html">Architecture</a>
-      <a href="people.html">People</a>
-      <a href="motion.html">Motion</a>
-      <a href="info.html">Info</a>
+      <a href="architecture.html" data-i18n="nav_architecture">Architecture</a>
+      <a href="people.html" data-i18n="nav_people">People</a>
+      <a href="motion.html" data-i18n="nav_motion">Motion</a>
+      <a href="info.html" data-i18n="nav_info">Info</a>
+      <button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button>
     </nav>
   </header>
 
@@ -68,7 +86,9 @@
     function src(name){ return 'images/' + name; }
 
 const PROJECTS = {
-  Paris: { title: 'PARIS', category: 'architecture', images: ['IMG_A_1_01.jpeg', 'IMG_A_1_02.jpeg', 'IMG_A_1_03.jpeg', 'IMG_A_1_04.jpeg', 'IMG_A_1_05.jpeg', 'IMG_A_1_06.jpeg'] },
+  BoursedeCommerce: { title: 'BOURSE DE COMMERCE, PARIS', category: 'architecture', images: ['IMG_A_1_01.jpeg', 'IMG_A_1_02.jpeg', 'IMG_A_1_03.jpeg', 'IMG_A_1_04.jpeg'] },
+  NotreDamedeHaut: { title: 'NOTRE-DAME DU HAUT, RONCHAMP', category: 'architecture', images: ['IMG_A_9_01.jpeg', 'IMG_A_9_02.jpeg', 'IMG_A_9_03.jpeg', 'IMG_A_9_04.jpeg', 'IMG_A_9_05.jpeg', 'IMG_A_9_06.jpeg'] },
+  CouventdeLaTourette: { title: 'COUVENT DE LA TOURETTE, ÉVEUX', category: 'architecture', images: ['IMG_A_10_01.jpeg', 'IMG_A_10_02.jpeg', 'IMG_A_10_03.jpeg', 'IMG_A_10_04.jpeg', 'IMG_A_10_05.jpeg', 'IMG_A_10_06.jpeg', 'IMG_A_10_07.jpeg', 'IMG_A_10_08.jpeg', 'IMG_A_10_09.jpeg', 'IMG_A_10_10.jpeg', 'IMG_A_10_11.jpeg'] },
   NewYork: { title: 'NEW YORK', category: 'architecture', images: ['IMG_A_2_01.jpeg', 'IMG_A_2_02.jpeg', 'IMG_A_2_03.jpeg', 'IMG_A_2_04.jpeg', 'IMG_A_2_05.jpeg', 'IMG_A_2_06.jpeg', 'IMG_A_2_07.jpeg', 'IMG_A_2_08.jpeg', 'IMG_A_2_09.jpeg', 'IMG_A_2_10.jpeg'] },
   VitraDesignMuseum01: { title: 'VITRA DESIGN MUSEUM 01', category: 'architecture', images: ['IMG_A_3_01.jpeg', 'IMG_A_3_02.jpeg', 'IMG_A_3_03.jpeg', 'IMG_A_3_04.jpeg', 'IMG_A_3_05.jpeg', 'IMG_A_3_06.jpeg', 'IMG_A_3_07.jpeg'] },
   VitraDesignMuseum02: { title: 'VITRA DESIGN MUSEUM 02', category: 'architecture', images: ['IMG_A_4_01.jpeg', 'IMG_A_4_02.jpeg', 'IMG_A_4_03.jpeg', 'IMG_A_4_04.jpeg', 'IMG_A_4_05.jpeg', 'IMG_A_4_06.jpeg', 'IMG_A_4_07.jpeg'] },
@@ -94,11 +114,29 @@ const PROJECTS = {
     if (project) {
       titleEl.textContent = project.title;
       backLink.href = project.category + '.html';
-      backLink.textContent = '← ' + (CATEGORY_LABELS[project.category] || project.category);
+      backLink.setAttribute('data-i18n-prefix', 'cat_' + project.category);
+
+      // update document title + SEO/OG meta tags for this specific project
+      const pageTitle = project.title + ' — LARARADICS';
+      const pageDesc = project.title + ' — photography by Laura Radics, Basel-based architect and photographer.';
+      const pageUrl = 'https://lararadics.studio/project?p=' + slug;
+      const pageImage = 'https://lararadics.studio/images/' + project.images[0];
+
+      document.title = pageTitle;
+      document.getElementById('metaDescription').setAttribute('content', pageDesc);
+      document.getElementById('canonicalLink').setAttribute('href', pageUrl);
+      document.getElementById('ogTitle').setAttribute('content', pageTitle);
+      document.getElementById('ogDescription').setAttribute('content', pageDesc);
+      document.getElementById('ogUrl').setAttribute('content', pageUrl);
+      document.getElementById('ogImage').setAttribute('content', pageImage);
+      document.getElementById('twitterTitle').setAttribute('content', pageTitle);
+      document.getElementById('twitterImage').setAttribute('content', pageImage);
+
       project.images.forEach((fname, i) => {
         const cell = document.createElement('div');
         cell.className = 'm-cell';
         const img = document.createElement('img');
+        img.alt = project.title + ' — photograph ' + (i + 1) + ' by Laura Radics';
         img.decoding = 'async';
         if (i < 2) {
           img.fetchPriority = 'high';
@@ -114,11 +152,13 @@ const PROJECTS = {
     }
   </script>
   
-  <footer>&copy; <span id="year"></span> LARARADICS. All rights reserved.</footer>
+  <footer><div class="footer-tagline" data-i18n="tagline">Architecture, Photography &amp; Videography — Laura Radics, Basel</div>&copy; <span id="year"></span> LARARADICS. <span data-i18n="footer_rights">All rights reserved.</span></footer>
 
+  <script src="i18n.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
+    i18nApply(localStorage.getItem('site-lang') || 'en');
   </script>
 </body>
 </html>
