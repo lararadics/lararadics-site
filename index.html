@@ -76,9 +76,13 @@
 
   /* phone nav — wrap onto its own row with real spacing instead of squeezing one line */
   @media (max-width:480px){
-    :root{ --header-h: 96px; }
-    header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; }
+    :root{ --header-h: 140px; }
+    header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:8px; padding:12px 6vw; }
     nav{ gap:18px; }
+    .brand{ display:contents; }
+    .mark{ order:1; }
+    nav{ order:2; }
+    .ig-link{ order:3; }
   }
 </style>
 </head>

@@ -59,11 +59,15 @@
   .info-text{ flex:1; max-width:1000px; }
   .info-name{ font-size:25px; font-weight:600; margin-bottom:20px; color:var(--stone); }
   .info-line{ font-size:13px; color:var(--stone); line-height:1.7; margin-bottom:2.5vh; }
-  .info-location{ margin-top:1vh; margin-bottom:6vh; }
+  .info-location{ margin-bottom:5vh; }
 
   @media (max-width:480px){
     header{ flex-direction:column; align-items:flex-start; justify-content:center; gap:10px; padding:12px 6vw; height:auto; }
     nav{ gap:18px; }
+    .brand{ display:contents; }
+    .mark{ order:1; }
+    nav{ order:2; }
+    .ig-link{ order:3; }
     .info{ flex-direction:column; gap:5vh; padding:2vh 6vw 6vh; }
     .info-photo{ flex:none; width:100%; max-width:280px; }
     .info-icons{ flex-direction:column; gap:14px; margin-top:3vh; }
@@ -90,7 +94,7 @@
     <div class="info-photo"><img src="images/IMG_LR_C.jpeg" alt="Laura Radics" decoding="async" fetchpriority="high"></div>
     <div class="info-text">
       <div class="info-name">Laura Radics</div>
-      <div class="info-line" data-i18n="info_bio_1">As an architect, photography has become a natural extension of my perspective, allowing me to explore how light transforms a space, how people interact with their surroundings and how small details contribute to the experience of a place. It is also a way of preserving moments and the memories attached to them. Through photography, I explore the same questions that guide my architectural work: how spaces are perceived, experienced, and remembered.</div>
+      <div class="info-line" data-i18n="info_bio">As an architect, photography has become a natural extension of my perspective, allowing me to explore how light transforms a space, how people interact with their surroundings and how small details contribute to the experience of a place. It is also a way of preserving moments and the memories attached to them. Through photography, I explore the same questions that guide my architectural work: how spaces are perceived, experienced, and remembered.</div>
       <div class="info-line info-location" data-i18n="info_bio_3">Basel, Switzerland · Budapest, Hungary</div>
       <div class="info-icons">
         <a href="mailto:lararadics.studio@gmail.com" aria-label="Email">
