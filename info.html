@@ -86,6 +86,7 @@
       <a href="people.html" data-i18n="nav_people">People</a>
       <a href="motion.html" data-i18n="nav_motion">Motion</a>
       <a href="#" class="active" data-i18n="nav_info">Info</a>
+      <a href="reviews.html" data-i18n="nav_reviews" id="reviewsNavLink" style="display:none">Reviews</a>
       <button id="langToggle" class="lang-btn" onclick="i18nToggle()">DE</button>
     </nav>
   </header>
@@ -123,6 +124,10 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
     i18nApply(localStorage.getItem('site-lang') || 'en');
+    if (localStorage.getItem('reviews-unlocked') === 'true') {
+      var rl = document.getElementById('reviewsNavLink');
+      if (rl) rl.style.display = '';
+    }
   </script>
 </body>
 </html>

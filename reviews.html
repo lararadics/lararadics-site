@@ -155,6 +155,7 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    localStorage.setItem('reviews-unlocked', 'true');
 
     const form = document.getElementById('reviewForm');
     form.addEventListener('submit', function (e) {
