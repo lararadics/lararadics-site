@@ -124,7 +124,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     document.addEventListener('contextmenu', function(e){ if (e.target.tagName === 'IMG') e.preventDefault(); });
     i18nApply(localStorage.getItem('site-lang') || 'en');
-    if (localStorage.getItem('reviews-unlocked') === 'true') {
+    if (window.SHOW_REVIEWS_TAB) {
       var rl = document.getElementById('reviewsNavLink');
       if (rl) rl.style.display = '';
     }

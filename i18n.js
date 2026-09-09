@@ -1,4 +1,12 @@
 /**
+ * SHOW_REVIEWS_TAB — one flag that turns the "Reviews" nav link on or off
+ * across the entire site. Set to true to show it everywhere, false to hide
+ * it everywhere (the reviews.html page itself still works either way, it's
+ * just not linked from the menu when this is false).
+ */
+window.SHOW_REVIEWS_TAB = true;
+
+/**
  * i18n.js — shared EN/DE toggle used on every page.
  *
  * How it works:
