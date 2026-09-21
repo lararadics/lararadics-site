@@ -4,7 +4,7 @@
  * it everywhere (the reviews.html page itself still works either way, it's
  * just not linked from the menu when this is false).
  */
-window.SHOW_REVIEWS_TAB = true;
+window.SHOW_REVIEWS_TAB = false;
 
 /**
  * i18n.js — shared EN/DE toggle used on every page.
